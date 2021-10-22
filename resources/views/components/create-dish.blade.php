@@ -1,4 +1,4 @@
-<form class="w-full" method="GET" action="{{ route('dishes') }}">
+<form class="w-full" method="POST" action="{{ route('dishes') }}">
     <div class="flex flex-wrap -mx-3 mb-6">
         <div class="w-full md:w-1/2 px-3">
             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
