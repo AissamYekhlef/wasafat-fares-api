@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DishController;
 use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 
@@ -30,3 +31,6 @@ Route::get('/categories', function(){
     $categories = Category::all();
     return $categories;
 });
+
+Route::view('/dishes', 'create-dish')->name('dishes');
+Route::post('/dishes', [DishController::class, 'store'])->name('dishes.store');
