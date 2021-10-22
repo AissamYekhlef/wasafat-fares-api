@@ -22,7 +22,9 @@ class DishFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'name' => $this->faker->name,
+            'description' => $this->faker->text,
+            'category_id' => rand(1, 10),
         ];
     }
 }

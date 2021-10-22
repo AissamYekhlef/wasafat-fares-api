@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Dish;
 use Illuminate\Database\Seeder;
 
 class DishSeeder extends Seeder
@@ -13,6 +14,6 @@ class DishSeeder extends Seeder
      */
     public function run()
     {
-        //
+        Dish::factory(50)->create();
     }
 }

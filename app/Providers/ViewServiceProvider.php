@@ -25,8 +25,8 @@ class ViewServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        View::composer('dashboard', function($view){
-            $view->with( 'categories', Category::all());
+        View::composer('components/*', function($view){
+            $view->with( 'categories', Category::latest()->get());
         });
     }
 }

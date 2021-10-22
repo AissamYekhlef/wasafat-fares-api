@@ -4,9 +4,8 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class CategoriesList extends Component
+class CategoryTable extends Component
 {
-
     /**
      * Create a new component instance.
      *
@@ -14,7 +13,7 @@ class CategoriesList extends Component
      */
     public function __construct()
     {
-        
+        //
     }
 
     /**
@@ -24,6 +23,6 @@ class CategoriesList extends Component
      */
     public function render()
     {
-        return view('components.categories-list');
+        return view('components.category-table');
     }
 }
