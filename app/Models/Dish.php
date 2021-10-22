@@ -9,6 +9,13 @@ class Dish extends Model
 {
     use HasFactory;
 
+    public $fillable = [
+        'name',
+        'description',
+        'category_id',
+        'picture_name'
+    ];
+
     public function category(){
         return $this->belongsTo(Category::class);
     }
@@ -16,7 +23,11 @@ class Dish extends Model
         return $this->hasMany(PreparationStep::class);
     }
     public function ingredients(){
-        return $this->belongsTo(Ingredient::class);
+        return $this->hasMany(Ingredient::class);
+    }
+
+    public function pic_url(){
+        return asset('storage/images/' . $this->picture_name);
     }
 
 

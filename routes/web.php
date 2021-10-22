@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DishController;
 use App\Models\Category;
+use App\Models\Dish;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,23 +16,28 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+require __DIR__.'/auth.php';
 
 Route::get('/', function () {
     return view('welcome');
 });
-
-Route::view('/t', 'tailwind');
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
-
-require __DIR__.'/auth.php';
-
-Route::get('/categories', function(){
-    $categories = Category::all();
-    return $categories;
+Route::get('/home', function () {
+    return view('welcome');
 });
 
-Route::view('/dishes', 'create-dish')->name('dishes');
-Route::post('/dishes', [DishController::class, 'store'])->name('dishes.store');
+// Route::view('/t', 'tailwind');
+
+
+Route::middleware(['auth', 'admin'])->group(function(){
+
+    Route::view('/dashboard', 'dashboard')->name('dashboard');
+
+    Route::view('/dishes', 'dishes-table')->name('dishes.index');
+    Route::view('/dishes/create', 'create-dish')->name('dishes.create');
+    Route::post('/dishes', [DishController::class, 'store'])->name('dishes.store');
+    Route::view('/category', 'categories-table')->name('category.index');
+    Route::view('/category/create', 'category-create')->name('category.create');
+    Route::post('/category', [CategoryController::class, 'store'])->name('category.store');
+
+
+});

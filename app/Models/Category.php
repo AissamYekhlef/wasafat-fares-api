@@ -17,4 +17,9 @@ class Category extends Model
     public function dishes(){
         return $this->hasMany(Dish::class);
     }
+
+    public function pic_url(){
+        return asset('storage/images/' . $this->picture_name);
+    }
+
 }

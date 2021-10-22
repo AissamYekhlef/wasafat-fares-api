@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Ingredient extends Model
 {
     use HasFactory;
+
+    public $fillable = [
+        'description',
+        'order',
+        'dish_id'
+    ];
 }

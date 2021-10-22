@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Dish;
+use App\Models\Ingredient;
+use App\Models\PreparationStep;
+use Dotenv\Validator;
 use Illuminate\Http\Request;
 
 class DishController extends Controller
@@ -35,7 +39,44 @@ class DishController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // $validated = $request->validate([
+        //     'title' => 'required|unique:posts|max:255',
+        //     'body' => 'required',
+        // ]);
+        $name = $request->name;
+        $category_id = $request->category;
+        $description = $request->description;
+        $ingredients = $request->ingredients;
+        $preparation_steps = $request->preparation_steps;
+
+        $photo_name = $request->file('photo')->getClientOriginalName();
+
+
+        $file = $request->file('photo')->storeAs('public/images', $photo_name); // save file locally
+
+        $dish = Dish::create([
+            'name'         => $name,
+            'category_id'  => $category_id,
+            'description'  => $description,
+            'picture_name' => $photo_name
+        ]);
+        foreach ($ingredients as $key => $value) {
+            Ingredient::create([
+                'description' => $value,
+                'order' => $key + 1,
+                'dish_id' => $dish->id
+            ]);
+        }
+
+        foreach ($preparation_steps as $key => $value) {
+            PreparationStep::create([
+                'description' => $value,
+                'order' => $key + 1,
+                'dish_id' => $dish->id
+            ]);
+        }
+
+        return redirect(route('dishes.index'));
     }
 
     /**

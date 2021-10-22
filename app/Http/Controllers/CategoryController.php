@@ -35,7 +35,19 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $category = Category::create([
+            'name' => $request->name
+        ]); 
+        
+        $photo_name = 'c_' . $category->id;
+
+        $category->picture_name = $photo_name;
+        $category->save();
+
+       
+        $file = $request->file('photo')->storeAs('public/images', $photo_name); // save file locally
+
+        return redirect()->back();
     }
 
     /**

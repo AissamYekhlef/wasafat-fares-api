@@ -16,7 +16,7 @@ class CreateIngredientsTable extends Migration
         Schema::create('ingredients', function (Blueprint $table) {
             $table->id();
             $table->text('description');
-            $table->integer('order');
+            $table->integer('order')->nullable();
             $table->foreignId('dish_id')->constrained('dishes')->onDelete('cascade');
             $table->timestamps();
         });
