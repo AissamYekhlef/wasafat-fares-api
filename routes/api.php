@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\API\DishController;
+use App\Http\Controllers\API\CategoryController;
 use App\Http\Resources\API\CategoryResource;
 use App\Models\Category;
 use Illuminate\Http\Request;
@@ -27,7 +28,8 @@ Route::get('/categories', function(){
 
 // Route::group(function(){});
 
-    Route::apiResource('dishes', DishController::class);
-    // Route::get('dishes', [DishController::class, 'index']);
-    // Route::apiResource('categories', [CategoryController::class])->only(['index', 'show']);
+    Route::apiResource('dishes', DishController::class)->only(['index', 'show']);
+    Route::get('categories/{category}', [CategoryController::class, 'show']);
+    Route::get('categories/{category}/dishes', [CategoryController::class, 'dishes']);
+    Route::get('categories/{category}/dishes/{dish}', [DishController::class, 'show']);
 
