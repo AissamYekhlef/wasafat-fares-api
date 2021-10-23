@@ -39,7 +39,7 @@ class CategoryController extends Controller
             'name' => $request->name
         ]); 
         
-        $photo_name = 'c_' . $category->id;
+        $photo_name = 'c_' . $category->id . $request->file('photo')->getClientOriginalExtension();
 
         $category->picture_name = $photo_name;
         $category->save();
