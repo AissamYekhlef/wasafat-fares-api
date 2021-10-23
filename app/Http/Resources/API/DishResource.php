@@ -20,6 +20,8 @@ class DishResource extends JsonResource
             'description' => $this->description,
             'picture_url' => $this->pic_url(),
             'created_at' => $this->created_at,
+            'ingredients' => $this->ingredients,
+            'preparation_steps' => $this->preparation_steps,
         ];
     }
 }
