@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\API\CategoryResource;
 use App\Http\Resources\API\DishResource;
 use App\Models\Category;
 use Illuminate\Http\Request;
@@ -33,12 +34,20 @@ class CategoryController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Category  $category)
     {
-        //
+        if(! $category){
+            return response()->json([
+                'id' => $category->id,
+                'error' => '404',
+                'message' => 'not found',
+            ]);
+        }
+
+        return new CategoryResource($category);
     }
 
     /**
