@@ -14,6 +14,6 @@ class DishSeeder extends Seeder
      */
     public function run()
     {
-        Dish::factory(50)->create();
+        Dish::factory(20)->create();
     }
 }
