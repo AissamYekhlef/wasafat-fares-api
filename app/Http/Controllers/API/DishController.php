@@ -25,7 +25,7 @@ class DishController extends Controller
 
         // })
         ;
-        $dishes->append('per_page', $paginate);
+        // $dishes->append('per_page', $paginate);
         // return DishResource::collection($dishes);
         return $dishes;
     }
