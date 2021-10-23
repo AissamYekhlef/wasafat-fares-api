@@ -47,6 +47,8 @@ class CategoryController extends Controller
                 'message' => 'not found',
             ]);
         }
+        $category->ingredients;
+        $category->preparations_steps;
 
         return new CategoryResource($category);
     }
@@ -78,7 +80,7 @@ class CategoryController extends Controller
     {
         $per_page = $request->per_page ?? '25';
         return DishResource::collection(
-            Dish::where('category_id', '=', $category)->with(['ingredients', 'preparation_steps'])->paginate($per_page)
+            Dish::where('category_id', '=', $category)->paginate($per_page)
         );
     }
 }
