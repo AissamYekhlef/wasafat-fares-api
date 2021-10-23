@@ -26,9 +26,10 @@ Route::get('/categories', function(){
     return CategoryResource::collection(Category::all());
 });
 
-// Route::group(function(){});
-
-    Route::apiResource('dishes', DishController::class)->only(['index', 'show']);
+// Route::group([],function(){
+// });
+    Route::get('dishes', [DishController::class, 'index']);
+    Route::get('dishes/{dish}', [DishController::class, 'show']);
     Route::get('categories/{category}', [CategoryController::class, 'show']);
     Route::get('categories/{category}/dishes', [CategoryController::class, 'dishes']);
     Route::get('categories/{category}/dishes/{dish}', [DishController::class, 'show']);

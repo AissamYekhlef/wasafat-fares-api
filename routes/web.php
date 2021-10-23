@@ -34,6 +34,7 @@ Route::middleware(['auth', 'admin'])->group(function(){
 
     Route::view('/dishes', 'dishes-table')->name('dishes.index');
     Route::view('/dishes/create', 'create-dish')->name('dishes.create');
+    Route::get('/dishes/{dish}', [ DishController::class, 'show'])->name('dishes.show');
     Route::post('/dishes', [DishController::class, 'store'])->name('dishes.store');
     Route::view('/category', 'categories-table')->name('category.index');
     Route::view('/category/create', 'category-create')->name('category.create');

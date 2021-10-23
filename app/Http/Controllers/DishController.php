@@ -48,11 +48,12 @@ class DishController extends Controller
         $description = $request->description;
         $ingredients = $request->ingredients;
         $preparation_steps = $request->preparation_steps;
+        $id = Dish::latest()->first()->id + 1;
 
-        $photo_name = $request->file('photo')->getClientOriginalName();
+        $photo_name = 'd_' . $id . '.' . $request->file('photo')->getClientOriginalExtension();
 
 
-        $file = $request->file('photo')->storeAs('public/images', $photo_name); // save file locally
+        $request->file('photo')->storeAs('public/images', $photo_name); // save file locally
 
         $dish = Dish::create([
             'name'         => $name,
@@ -61,19 +62,25 @@ class DishController extends Controller
             'picture_name' => $photo_name
         ]);
         foreach ($ingredients as $key => $value) {
-            Ingredient::create([
-                'description' => $value,
-                'order' => $key + 1,
-                'dish_id' => $dish->id
-            ]);
+            if($value != null){
+                Ingredient::create([
+                    'description' => $value,
+                    'order' => $key + 1,
+                    'dish_id' => $dish->id
+                ]);
+            }
+            
         }
 
         foreach ($preparation_steps as $key => $value) {
-            PreparationStep::create([
-                'description' => $value,
-                'order' => $key + 1,
-                'dish_id' => $dish->id
-            ]);
+            if($value != null){
+                PreparationStep::create([
+                    'description' => $value,
+                    'order' => $key + 1,
+                    'dish_id' => $dish->id
+                ]);
+            }
+            
         }
 
         return redirect(route('dishes.index'));
@@ -87,7 +94,9 @@ class DishController extends Controller
      */
     public function show(Dish $dish)
     {
-        //
+        $dish->ingredients;
+        $dish->preparation_steps;
+        return view('dish-details')->with('dish', $dish);
     }
 
     /**

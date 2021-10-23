@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\API\CategoryResource;
 use App\Http\Resources\API\DishResource;
 use App\Models\Category;
+use App\Models\Dish;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -73,9 +74,11 @@ class CategoryController extends Controller
         //
     }
             
-    public function dishes($category)
+    public function dishes(Request $request, $category)
     {
-        $category_selected = Category::findOrFail($category);
-        return DishResource::collection($category_selected->dishes); 
+        $per_page = $request->per_page ?? '25';
+        return DishResource::collection(
+            Dish::where('category_id', '=', $category)->with(['ingredients', 'preparation_steps'])->paginate($per_page)
+        );
     }
 }
