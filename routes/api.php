@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\API\DishController;
+use App\Http\Resources\API\CategoryResource;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -20,6 +22,12 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/categories', function(){
-    $categories = Category::all();
-    return $categories;
+    return CategoryResource::collection(Category::all());
 });
+
+// Route::group(function(){});
+
+    Route::apiResource('dishes', DishController::class);
+    // Route::get('dishes', [DishController::class, 'index']);
+    // Route::apiResource('categories', [CategoryController::class])->only(['index', 'show']);
+
