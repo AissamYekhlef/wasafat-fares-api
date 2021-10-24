@@ -740,6 +740,8 @@
     "List of Categories": "قائمة الأنواع",
     "Add Category": "أضف نوع",
     "Edit Dish": "تعديل وصفة",
-    "Dish Details": "تفاصيل الوصفة"
-    
+    "Dish Details": "تفاصيل الوصفة",
+    "Edit Category": "تعديل النوع",
+    "Show Category": "عرض النوع",
+    "Category Picture": "صورة النوع"
 }

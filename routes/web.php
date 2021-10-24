@@ -38,9 +38,12 @@ Route::middleware(['auth', 'admin'])->group(function(){
     Route::put('/dishes/{dish}', [ DishController::class, 'update'])->name('dishes.update');
     Route::get('/dishes/{dish}/edit', [ DishController::class, 'edit'])->name('dishes.edit');
     Route::post('/dishes', [DishController::class, 'store'])->name('dishes.store');
-    Route::view('/category', 'categories-table')->name('category.index');
-    Route::view('/category/create', 'category-create')->name('category.create');
-    Route::post('/category', [CategoryController::class, 'store'])->name('category.store');
+    Route::view('/categories', 'categories-table')->name('category.index');
+    Route::view('/categories/create', 'category-create')->name('category.create');
+    Route::post('/categories', [CategoryController::class, 'store'])->name('category.store');
+    Route::get('/categories/{category}', [CategoryController::class, 'show'])->name('category.show');
+    Route::get('/categories/{category}/edit', [CategoryController::class, 'edit'])->name('category.edit');
+    Route::put('/categories/{category}', [CategoryController::class, 'update'])->name('category.update');
 
 
 });

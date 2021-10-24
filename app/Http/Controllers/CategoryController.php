@@ -58,7 +58,7 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        //
+        return view('show-category')->with('category', $category);
     }
 
     /**
@@ -69,7 +69,7 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        return view('edit-category')->with('category', $category);
     }
 
     /**
@@ -81,7 +81,21 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        //
+        if($category && $category != null){
+
+        }
+        $category->update(['name' => $request->name]); 
+        $photo_name = $category->picture_name;
+
+        if($request->file('photo')){
+            $photo_name = 'c_' . $category->id . '.' . $request->file('photo')->getClientOriginalExtension();
+            $request->file('photo')->storeAs('public/images', $photo_name); 
+        }
+        
+        $category->picture_name = $photo_name;
+        $category->save();
+
+        return redirect(route('category.show', $category->id));
     }
 
     /**
