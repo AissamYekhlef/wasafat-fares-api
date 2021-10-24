@@ -48,8 +48,8 @@ class DishController extends Controller
         $description = $request->description;
         $ingredients = $request->ingredients;
         $preparation_steps = $request->preparation_steps;
-        $id = Dish::latest()->first()->id + 1;
-
+        $last = Dish::latest()->first();    
+        $id = $last ? $last->id + 1 : 1;    
         $photo_name = 'd_' . $id . '.' . $request->file('photo')->getClientOriginalExtension();
 
 
