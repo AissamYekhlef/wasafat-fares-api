@@ -1,16 +1,16 @@
-<div>
-    <h1> {{ __('Dish Name')}} : {{ $dish->name }} </h1>
-    <h3> {{ __('Dish Picture')}} </h3>
+<div class="mt-4">
+    <h1 class="text-red-700"> {{ __('Dish Name')}} : {{ $dish->name }} </h1>
+    <h3 class="text-red-700"> {{ __('Dish Picture')}} </h3>
     <div>
         <img src="{{ asset('storage/images/'. $dish->picture_name) }}" alt="picture name">
     </div>
 
     <div>
-        <h3> {{ __('Dish Description')}} :  </h3>
+        <h3 class="text-red-700"> {{ __('Dish Description')}} :  </h3>
         <p> {{ $dish->description }} </p>
     </div>
     <div>
-        <h2>{{ __('Ingredients')}}</h2>
+        <h2 class="text-red-700">{{ __('Ingredients')}}</h2>
         <ol>
             @if($dish->ingredients)
                 @foreach ($dish->ingredients as $ingredient)
@@ -20,7 +20,7 @@
         </ol>
     </div>
     <div>
-        <h2>{{ __('Preparation Steps')}}</h2>
+        <h2 class="text-red-700">{{ __('Preparation Steps')}}</h2>
         <ol>
             @if ($dish->preparation_steps)
                 @foreach ($dish->preparation_steps as $step)

@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dish Details') }}
+            {{ __('Edit Dish') }}
         </h2>
     </x-slot>
 
@@ -9,11 +9,8 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
-                <a href="{{ route('dishes.edit', $dish->id) }}" 
-                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"> {{ __('Edit Dish') }}</a>
-                    <x-dish-details :dish="$dish">
-                        
-                    </x-dish-details>
+
+                    <x-edit-dish :dish="$dish" />
 
                 </div>
             </div>

@@ -107,7 +107,7 @@ class DishController extends Controller
      */
     public function edit(Dish $dish)
     {
-        //
+        return view('edit-dish')->with('dish', $dish);
     }
 
     /**
@@ -119,7 +119,54 @@ class DishController extends Controller
      */
     public function update(Request $request, Dish $dish)
     {
-        //
+        $name = $request->name;
+        $category_id = $request->category;
+        $description = $request->description;
+        $ingredients = $request->ingredients;
+        $preparation_steps = $request->preparation_steps;
+        $photo_name = $dish->picture_name;
+
+        if($request->file('photo')){
+            $photo_name = 'd_' . $dish->id . '.' . $request->file('photo')->getClientOriginalExtension();
+            $request->file('photo')->storeAs('public/images', $photo_name);
+        }
+
+        $dish->update([
+            'name'         => $name,
+            'category_id'  => $category_id,
+            'description'  => $description,
+            'picture_name' => $photo_name
+        ]);
+        if($ingredients){
+            Ingredient::where('dish_id', '=', $dish->id)->delete();
+        }
+        
+        foreach ($ingredients as $key => $value) {
+            if($value != null){
+                Ingredient::create([
+                    'description' => $value,
+                    'order' => $key + 1,
+                    'dish_id' => $dish->id
+                ]);
+            }
+            
+        }
+        if($ingredients){
+            PreparationStep::where('dish_id', '=', $dish->id)->delete();
+        }
+
+        foreach ($preparation_steps as $key => $value) {
+            if($value != null){
+                PreparationStep::create([
+                    'description' => $value,
+                    'order' => $key + 1,
+                    'dish_id' => $dish->id
+                ]);
+            }
+            
+        }
+
+        return redirect(route('dishes.show', $dish->id));
     }
 
     /**

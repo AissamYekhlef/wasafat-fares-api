@@ -20,10 +20,10 @@ class Dish extends Model
         return $this->belongsTo(Category::class);
     }
     public function preparation_steps(){
-        return $this->hasMany(PreparationStep::class);
+        return $this->hasMany(PreparationStep::class)->orderBy('order');
     }
     public function ingredients(){
-        return $this->hasMany(Ingredient::class);
+        return $this->hasMany(Ingredient::class)->orderBy('order');
     }
 
     public function pic_url(){
