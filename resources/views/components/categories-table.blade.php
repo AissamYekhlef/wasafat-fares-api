@@ -1,11 +1,11 @@
 <div>
     <table class="w-full whitespace-nowrap">
         <thead>
-          <tr class="text-left font-bold">
-            <th class="border px-6 py-4">Category ID</th>
-            <th class="border px-6 py-4">Category Name</th>
-            <th class="border px-6 py-4">Picture</th>
-            <th class="border px-6 py-4">Dishes Number</th>
+          <tr class="text-center font-bold">
+            <th class="border px-6 py-4">{{ __('Category ID')}} </th>
+            <th class="border px-6 py-4">{{ __('Category Name')}}</th>
+            <th class="border px-6 py-4">{{ __('Picture')}}</th>
+            <th class="border px-6 py-4">{{ __('Dishes Number')}}</th>
           </tr>
         </thead>
         <tbody>

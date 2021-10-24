@@ -1,7 +1,7 @@
 <div>
     <ul>
         @foreach ($categories as $category)
-            <li> category id : {{ $category->id }} Name : {{ $category->name }} </li>
+            <li> {{ __('Category ID') }} : {{ $category->id }} {{ __('Name') }} : {{ $category->name }} </li>
         @endforeach 
     </ul>
     

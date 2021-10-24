@@ -1,13 +1,13 @@
 <div>
     <table class="w-full whitespace-nowrap">
         <thead>
-          <tr class="text-left font-bold">
-            <th class="border px-3 py-2">Dish ID</th>
-            <th class="border px-3 py-2">Dish Name</th>
-            <th class="border px-3 py-2">Category Name</th>
-            <th class="border px-3 py-2">Ingredient Number</th>
-            <th class="border px-3 py-2">Preparation Steps Number</th>
-            <th class="border px-3 py-2 max-w-5">Picture</th>
+          <tr class="text-center font-bold">
+            <th class="border px-3 py-2">{{ __('Dish ID') }}</th>
+            <th class="border px-3 py-2">{{ __('Dish Name') }}</th>
+            <th class="border px-3 py-2">{{ __('Category Name') }}</th>
+            <th class="border px-3 py-2">{{ __('Ingredient Number') }}</th>
+            <th class="border px-3 py-2">{{ __('Preparation Steps Number') }}</th>
+            <th class="border px-3 py-2 max-w-5">{{ __('Picture') }}</th>
           </tr>
         </thead>
         <tbody>
