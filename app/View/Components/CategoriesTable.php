@@ -6,14 +6,15 @@ use Illuminate\View\Component;
 
 class CategoriesTable extends Component
 {
+    private $categories;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($categories)
     {
-        //
+        $this->categories = $categories;
     }
 
     /**
@@ -23,6 +24,6 @@ class CategoriesTable extends Component
      */
     public function render()
     {
-        return view('components.categories-table');
+        return view('components.categories-table')->with('categories', $this->categories);
     }
 }

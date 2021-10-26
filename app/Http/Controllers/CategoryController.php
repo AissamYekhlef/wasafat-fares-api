@@ -14,7 +14,9 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $categories = Category::withCount('dishes')->latest()->get();
+
+        return view('categories-table')->with('categories', $categories);
     }
 
     /**

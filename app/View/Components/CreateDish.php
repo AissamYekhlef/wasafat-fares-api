@@ -6,14 +6,16 @@ use Illuminate\View\Component;
 
 class CreateDish extends Component
 {
+    private $categories;
+    
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($categories)
     {
-        //
+        $this->categories = $categories;
     }
 
     /**
@@ -23,6 +25,6 @@ class CreateDish extends Component
      */
     public function render()
     {
-        return view('components.create-dish');
+        return view('components.create-dish')->with('categories', $this->categories);
     }
 }

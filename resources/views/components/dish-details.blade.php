@@ -2,7 +2,7 @@
     <h1 class="text-red-700"> {{ __('Dish Name')}} : {{ $dish->name }} </h1>
     <h3 class="text-red-700"> {{ __('Dish Picture')}} </h3>
     <div>
-        <img src="{{ asset('storage/images/'. $dish->picture_name) }}" alt="picture name">
+        <img src="{{ asset('storage/images/'. $dish->picture_name) }}" width="300" height="300" alt="picture name">
     </div>
 
     <div>

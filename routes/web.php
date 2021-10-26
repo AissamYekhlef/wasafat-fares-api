@@ -32,13 +32,13 @@ Route::middleware(['auth', 'admin'])->group(function(){
 
     Route::view('/dashboard', 'dashboard')->name('dashboard');
 
-    Route::view('/dishes', 'dishes-table')->name('dishes.index');
-    Route::view('/dishes/create', 'create-dish')->name('dishes.create');
+    Route::get('/dishes', [DishController::class, 'index'])->name('dishes.index');
+    Route::get('/dishes/create', [DishController::class, 'create'])->name('dishes.create');
     Route::get('/dishes/{dish}', [ DishController::class, 'show'])->name('dishes.show');
     Route::put('/dishes/{dish}', [ DishController::class, 'update'])->name('dishes.update');
     Route::get('/dishes/{dish}/edit', [ DishController::class, 'edit'])->name('dishes.edit');
     Route::post('/dishes', [DishController::class, 'store'])->name('dishes.store');
-    Route::view('/categories', 'categories-table')->name('category.index');
+    Route::get('/categories', [CategoryController::class, 'index'])->name('category.index');
     Route::view('/categories/create', 'category-create')->name('category.create');
     Route::post('/categories', [CategoryController::class, 'store'])->name('category.store');
     Route::get('/categories/{category}', [CategoryController::class, 'show'])->name('category.show');

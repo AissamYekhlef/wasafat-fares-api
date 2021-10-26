@@ -16,9 +16,17 @@ class DishController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $paginator = $request->per_page ?? 10;
+        $dishes = Dish::withCount(['category', 'ingredients', 'preparation_steps'])
+                        ->with('category')
+                        ->latest()->paginate($paginator);
+
+        $dishes->withQueryString('per_page');
+     
+        return view('dishes-table')->with('dishes', $dishes);
+
     }
 
     /**
@@ -28,7 +36,8 @@ class DishController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Category::select(['id', 'name'])->latest()->get();
+        return view('create-dish')->with('categories', $categories);
     }
 
     /**

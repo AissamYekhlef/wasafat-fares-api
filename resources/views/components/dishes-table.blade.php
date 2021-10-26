@@ -18,8 +18,8 @@
                 <td class="border px-3 py-2">{{ $dish->id }}</td>
               <td class="border px-3 py-2"><a href="{{ route('dishes.show', $dish->id) }}"> {{ $dish->name }} </a></td>
                 <td class="border px-3 py-2">{{ $dish->category?->name }}</td>
-                <td class="border px-3 py-2">{{ $dish->ingredients?->count() }}</td>
-                <td class="border px-3 py-2">{{ $dish->preparation_steps->count() }}</td>
+                <td class="border px-3 py-2">{{ $dish->ingredients_count }}</td>
+                <td class="border px-3 py-2">{{ $dish->preparation_steps_count }}</td>
                 {{-- <td class="border px-3 py-2 max-w-5"> <a href="{{ $dish->pic_url() }}"> {{ $dish->name }} - Pic </a></td> --}}
                 <td class="border px-6 py-4"><a href="{{ route('dishes.show', $dish->id) }}"
                   class="text-red-700"
@@ -29,4 +29,6 @@
 
         </tbody>
       </table>
+      
+      {{ $dishes->links() }}
 </div>

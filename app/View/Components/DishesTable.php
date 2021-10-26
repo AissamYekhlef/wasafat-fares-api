@@ -6,14 +6,15 @@ use Illuminate\View\Component;
 
 class DishesTable extends Component
 {
+    private $dishes;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($dishes)
     {
-        //
+        $this->dishes = $dishes;
     }
 
     /**
@@ -23,6 +24,6 @@ class DishesTable extends Component
      */
     public function render()
     {
-        return view('components.dishes-table');
+        return view('components.dishes-table')->with('dishes', $this->dishes);
     }
 }
