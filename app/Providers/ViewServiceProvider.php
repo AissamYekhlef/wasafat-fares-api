@@ -28,6 +28,7 @@ class ViewServiceProvider extends ServiceProvider
     {
         View::composer([
             'components/edit-dish',
+            'components/categories-list',
         ], function($view){
             $view->with( 
                 [
