@@ -80,7 +80,7 @@ class CategoryController extends Controller
     {
         $per_page = $request->per_page ?? '25';
         return DishResource::collection(
-            Dish::where('category_id', '=', $category)->paginate($per_page)
+            Dish::where('category_id', '=', $category)->latest()->paginate($per_page)
         );
     }
 }

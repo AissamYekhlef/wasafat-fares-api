@@ -20,7 +20,10 @@ class DishController extends Controller
     {
         $paginate = $request->per_page ?? '25';
 
-        $dishes = Dish::paginate($paginate);
+        $dishes = Dish::latest()->paginate($paginate);
+        // $dishes = Dish::paginate($paginate);
+
+        $dishes->withQueryString('per_page');
 
         return DishResource::collection($dishes);
     }
