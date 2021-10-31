@@ -81,4 +81,9 @@ class DishController extends Controller
     {
         //
     }
+    
+    public function lastDish(){
+        $last_dish = Dish::latest()->first();
+        return new DishResource($last_dish);
+    }
 }

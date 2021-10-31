@@ -29,6 +29,7 @@ Route::get('/categories', function(){
 // Route::group([],function(){
 // });
     Route::get('dishes', [DishController::class, 'index']);
+    Route::get('dishes/last', [DishController::class, 'lastDish']);
     Route::get('dishes/{dish}', [DishController::class, 'show']);
     Route::get('categories/{category}', [CategoryController::class, 'show']);
     Route::get('categories/{category}/dishes', [CategoryController::class, 'dishes']);
