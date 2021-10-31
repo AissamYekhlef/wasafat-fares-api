@@ -4,10 +4,10 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\API\DishResource;
+use App\Http\Resources\API\DishWithoutForignsResource;
 use App\Models\Category;
 use App\Models\Dish;
 use Illuminate\Http\Request;
-use Illuminate\Http\Resources\Json\JsonResource;
 
 class DishController extends Controller
 {
@@ -81,9 +81,9 @@ class DishController extends Controller
     {
         //
     }
-    
+
     public function lastDish(){
         $last_dish = Dish::latest()->first();
-        return new DishResource($last_dish);
+        return new DishWithoutForignsResource($last_dish);
     }
 }
