@@ -13,7 +13,7 @@
 ### Add new category /categories/create
 ![Add new category](./public/screenshots/add-category.PNG)
 
-### Show all dishes /dishes/2/edit
+### Show all dishes /dishes
 ![Show all dishes](./public/screenshots/all-dishes.PNG)
-### Show all categories /dishes/2/edit
+### Show all categories /categories
 ![Show all categories](./public/screenshots/categories.PNG)
